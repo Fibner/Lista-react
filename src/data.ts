@@ -1,0 +1,1 @@
+export const MyList = ["Ryszard", "Henio", "Graźyna", "Kaziu", "Teresa"];
