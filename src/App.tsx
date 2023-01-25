@@ -10,7 +10,12 @@ function App() {
       <h1>Moja lista</h1>
       <ol className='list-group'>
         {list.map((item, index)=>(
-            <li className='list-group-item' key={index}>{item}</li>
+            <li className='list-group-item' key={index}>
+              <span onClick={()=>{
+                let temp = list.splice(index-1, 1);
+                setList(temp);
+              }}>X </span> {item}
+              </li>
           )
         )}
       </ol>
@@ -18,7 +23,12 @@ function App() {
       <div className='row row-cols-auto'>
         <label className='col m-2' htmlFor='name'>Podaj imię:</label>
         <input className='col m-2' type={'text'} name='name' id='name' value={info} onChange={(e)=>setInfo(e.target.value)}/>
-        <input className='col m-2' type={'button'} value='Dodaj' onClick={()=>setList([...list,info])}/>
+        <input className='col m-2' type={'button'} value='Dodaj' onClick={()=>{
+          if(info.trim().length === 0) return
+          setList([...list,info])
+          setInfo("")
+        }
+        }/>
       </div>
     </div>
   );
